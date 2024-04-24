@@ -13,6 +13,9 @@
     <meta name="Author" content="Spruko Technologies Private Limited">
 	<meta name="keywords" content="admin dashboard,dashboard design htmlbootstrap admin template,html admin panel,admin dashboard html,admin panel html template,bootstrap dashboard,html admin template,html dashboard,html admin dashboard template,bootstrap dashboard template,dashboard html template,bootstrap admin panel,dashboard admin bootstrap,bootstrap admin dashboard">
 
+    <script src="{{ asset('js/vue/vue.min.js') }}"></script>
+    <script src="{{ asset('js/vue/vue-dev.js') }}"></script>
+    
     <!-- Bootstrap Css -->
     <link id="style" href="{{ asset('libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Style Css -->
@@ -505,7 +508,7 @@
         <img src="../assets/images/media/loader.svg" alt="">
     </div>
 
-    <div class="page">
+    <div class="page" id="base-vue">
          
         @include('globals.line-header')
         
@@ -988,7 +991,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Switcher -->
 
         <!-- Footer Start -->
         <footer class="footer mt-auto py-3 text-center">
@@ -1013,6 +1015,10 @@
         <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
     </div>
     <div id="responsive-overlay"></div>
+    
+    <script src="{{ asset('js/vue/axios.min.js') }}"></script>
+    <script src="{{ asset('js/vue/axios-dev.js') }}"></script>
+    
     <!-- Popper JS -->
     <script src="{{ asset('libs/@popperjs/core/umd/popper.min.js') }}"></script>
     <!-- Bootstrap JS -->
@@ -1042,6 +1048,8 @@
     <script src="{{ asset('js/custom-switcher.min.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('js/custom.js') }}"></script>
-
+    
+    @yield('scripts')
+    
 </body>
 </html>
