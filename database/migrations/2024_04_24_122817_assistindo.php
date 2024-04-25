@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('assistindo', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_anime');
-            $table->foreign('id_anime')->references('id')->on('anime')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_anime')->references('id')->on('animes');
             $table->unsignedBigInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->integer('episodio');
             $table->string('dia_semana', length: 255);
             $table->integer('nota');

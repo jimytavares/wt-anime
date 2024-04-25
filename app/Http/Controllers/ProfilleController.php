@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Models\animes;
+use App\Models\assistindo;
 
 class ProfilleController extends Controller
 {
@@ -26,8 +28,19 @@ class ProfilleController extends Controller
     public function welcome(){
         
         $getUserData = $this->getUserData();
-            
-        return view('welcome', compact(["getUserData"]));
+        $dataAtual = date('Y-m-d');
+        
+        $session_user = auth()->user();
+        $id_user = $session_user->id;
+        
+        $slc_assistindo = assistindo::where('id_user', $id_user)
+            ->join('animes', 'animes.id', '=', 'assistindo.id_anime')
+            ->orderBy('animes.data_semana')
+            ->select('assistindo.*')
+            ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
+            ->get();
+    
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual"]));
     }
     
     

@@ -33,7 +33,7 @@
                     <div class="card-body border-bottom">
                         <div class="d-sm-flex  main-profile-cover">
                             <span class="avatar avatar-xxl online me-3">
-                                <img src="../assets/images/faces/5.jpg" alt="" class="avatar avatar-xxl">
+                                <img src="{{ URL::asset('images/faces/5.jpg') }}" alt="" class="avatar avatar-xxl">
                             </span>
                             <div class="flex-fill main-profile-info my-auto">
                                 <h5 class="fw-semibold mb-1 ">{{$getUserData['user_name']}}</h5>
@@ -72,6 +72,76 @@
                         <div class="progress progress-sm progress-animate ">
                             <div class="progress-bar bg-primary ronded-1" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{$getUserData['user_exp']}}%;"></div>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="card custom-card">
+                    <div class="card-header">
+                        <div class="card-title">Followers</div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group followers-list">
+                            <li class="list-group-item">
+                                <div class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img src="{{ URL::asset('images/faces/1.jpg') }}" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">Alicia Sierra</p>
+                                        <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
+                                    </div>
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img src="{{ URL::asset('images/faces/3.jpg') }}" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">Samantha Mery</p>
+                                        <span class="fs-11 text-muted op-7">samanthamery@gmail.com</span>
+                                    </div>
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img src="{{ URL::asset('images/faces/6.jpg') }}" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">Juliana Pena</p>
+                                        <span class="fs-11 text-muted op-7">juliapena555@gmail.com</span>
+                                    </div>
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img src="{{ URL::asset('images/faces/15.jpg') }}" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">Adam Smith</p>
+                                        <span class="fs-11 text-muted op-7">adamsmith99@gmail.com</span>
+                                    </div>
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img src="{{ URL::asset('images/faces/13.jpg') }}" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">Farhaan Amhed</p>
+                                        <span class="fs-11 text-muted op-7">farhaanahmed989@gmail.com</span>
+                                    </div>
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -221,51 +291,43 @@
 
             </div>
 
-            <div class="col-xxl-6">
+            <div class="col-xxl-9">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class=" custom-card">
                             <div class="card-body p-0">
+                                
+                                {{-- .4/buttons --}}
                                 <div class="border-block-end-dashed  bg-white rounded-2 p-2">
                                     <div>
                                         <ul class="nav nav-pills nav-justified gx-3 tab-style-6 d-sm-flex d-block " id="myTab" role="tablist">
                                             <li class="nav-item rounded" role="presentation">
-                                                <button class="nav-link active" id="activity-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#activity-tab-pane" type="button" role="tab"
-                                                    aria-controls="activity-tab-pane" aria-selected="true"><i
-                                                        class="ri-gift-line me-1 align-middle d-inline-block fs-16"></i>Activity</button>
+                                                <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-tab-pane" type="button" role="tab" aria-controls="posts-tab-pane" aria-selected="false"><i class="ri-bill-line me-1 align-middle d-inline-block fs-16"></i>Assistindo</button>
                                             </li>
                                             <li class="nav-item rounded" role="presentation">
-                                                <button class="nav-link" id="gallery-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#gallery-tab-pane" type="button" role="tab"
-                                                    aria-controls="gallery-tab-pane" aria-selected="false"><i
-                                                        class="ri-exchange-box-line me-1 align-middle d-inline-block fs-16"></i>Gallery</button>
+                                                <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity-tab-pane" type="button" role="tab" aria-controls="activity-tab-pane" aria-selected="true"><i class="ri-gift-line me-1 align-middle d-inline-block fs-16"></i>Activity</button>
                                             </li>
                                             <li class="nav-item rounded" role="presentation">
-                                                <button class="nav-link" id="posts-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#posts-tab-pane" type="button" role="tab"
-                                                    aria-controls="posts-tab-pane" aria-selected="false"><i
-                                                        class="ri-bill-line me-1 align-middle d-inline-block fs-16"></i>Projects</button>
+                                                <button class="nav-link" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery-tab-pane" type="button" role="tab" aria-controls="gallery-tab-pane" aria-selected="false"><i class="ri-exchange-box-line me-1 align-middle d-inline-block fs-16"></i>Gallery</button>
                                             </li>
                                             <li class="nav-item rounded" role="presentation">
-                                                <button class="nav-link" id="followers-tab" data-bs-toggle="tab"
-                                                    data-bs-target="#followers-tab-pane" type="button" role="tab"
-                                                    aria-controls="followers-tab-pane" aria-selected="false"><i
-                                                        class="ri-money-dollar-box-line me-1 align-middle d-inline-block fs-16"></i>Friends</button>
+                                                <button class="nav-link" id="followers-tab" data-bs-toggle="tab" data-bs-target="#followers-tab-pane" type="button" role="tab" aria-controls="followers-tab-pane" aria-selected="false"><i class="ri-money-dollar-box-line me-1 align-middle d-inline-block fs-16"></i>Friends</button>
                                             </li>
                                         </ul>
                                     </div>   
                                 </div>
+                                
+                                {{-- ./infos --}}
                                 <div class="py-4">
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane show active fade p-0 border-0 bg-white p-4 rounded-3" id="activity-tab-pane"
-                                            role="tabpanel" aria-labelledby="activity-tab" tabindex="0">
+                                        
+                                        <div class="tab-pane fade p-0 border-0 bg-white p-4 rounded-3" id="activity-tab-pane" role="tabpanel" aria-labelledby="activity-tab" tabindex="0">
                                             <ul class="list-unstyled profile-timeline">
                                                 <li>
                                                     <span class="fs-12 text-muted fw-semibold text-end profile-timeline-time">16,Dec 2023</span>
                                                     <div>
                                                         <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
-                                                            <img src="../assets/images/faces/1.jpg" alt="">
+                                                            <img src="{{ URL::asset('images/faces/1.jpg') }}" alt="">
                                                         </span>
                                                         <p class="text-muted mb-2">
                                                             <span class="text-default"><b>Barnes vare</b> Shared project</span>
@@ -285,7 +347,7 @@
                                                     <div>
                                                         <span class="fs-12 text-muted fw-semibold text-end profile-timeline-time">18,Dec 2023</span>
                                                         <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
-                                                            <img src="../assets/images/faces/3.jpg" alt="">
+                                                            <img src="{{ URL::asset('images/faces/3.jpg') }}" alt="">
                                                         </span>
                                                         <p class="text-muted mb-2">
                                                             <span class="text-default"><b>Alzbeth Aren</b> Shared project</span>.
@@ -301,7 +363,7 @@
                                                     <div>
                                                         <span class="fs-12 text-muted fw-semibold text-end  ">11,Dec 2023</span>
                                                         <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
-                                                            <img src="../assets/images/faces/5.jpg" alt="">
+                                                            <img src="{{ URL::asset('images/faces/5.jpg') }}" alt="">
                                                         </span>
                                                         <p class="text-muted mb-1">
                                                             <span class="text-default"><b>Melissa Blue</b> liked your post <b>travel excites</b></span>.
@@ -309,13 +371,13 @@
                                                         <p class="text-muted">you are already feeling the tense atmosphere of the video playing in the background</p>
                                                         <p class="profile-activity-media mb-0">
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-12.jpg" class="m-1" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-12') }}.jpg" class="m-1" alt="">
                                                             </a>  
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-13.jpg" class="m-1" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-13') }}.jpg" class="m-1" alt="">
                                                             </a>  
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-14.jpg" class="m-1" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-14') }}.jpg" class="m-1" alt="">
                                                             </a>  
                                                         </p>
                                                     </div>
@@ -324,7 +386,7 @@
                                                     <div>
                                                         <span class="fs-12 text-muted fw-semibold text-end profile-timeline-time">18,Dec 2023</span>
                                                         <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
-                                                            <img src="../assets/images/faces/11.jpg" alt="">
+                                                            <img src="{{ URL::asset('images/faces/11.jpg') }}" alt="">
                                                         </span>
                                                         <p class="text-muted mb-2">
                                                             <span class="text-default"><b>Json Smith</b> reacted to the post 👍</span>.
@@ -338,14 +400,14 @@
                                                     <div>
                                                         <span class="fs-12 text-muted fw-semibold text-end  profile-timeline-time">21,Dec 2023</span>
                                                         <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
-                                                            <img src="../assets/images/faces/4.jpg" alt="">
+                                                            <img src="{{ URL::asset('images/faces/4.jpg') }}" alt="">
                                                         </span>
                                                         <p class="text-muted mb-2">
                                                             <span class="text-default"><b>Alicia Keys</b> shared a document with <b>you</b></span>.
                                                         </p>
                                                         <p class="profile-activity-media mb-0">
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-10.jpg" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-10.jpg') }}" alt="">
                                                             </a>  
                                                             <span class="fs-11 text-muted">432.87KB</span>
                                                         </p>
@@ -362,10 +424,10 @@
                                                         </p>
                                                         <p class="profile-activity-media mb-0">
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-15.jpg" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-15') }}.jpg" alt="">
                                                             </a>    
                                                             <a href="javascript:void(0);">
-                                                                <img src="../assets/images/media/media-16.jpg" alt="">
+                                                                <img src="{{ URL::asset('images/media/media-16') }}.jpg" alt="">
                                                             </a>    
                                                         </p>
                                                     </div>
@@ -424,8 +486,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane"
-                                            role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
+                                        
+                                        <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                                     <a href="../assets/images/media/media-40.jpg" class="glightbox card" data-gallery="gallery1">
@@ -489,645 +551,110 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-0 border-0" id="posts-tab-pane"
-                                            role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
-                                        <div class="row">
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-pending-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Testing</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-info">pending</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                    <span class="avatar-list-stacked ms-1">
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                        </span>
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                        </span>
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                        </span>
-                                                                    </span>
-                                                                    <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-secondary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal1"><i class="ri-add-fill"></i></button></span>
-                                                                    <div class="modal fade" id="addpromodal1" tabindex="-1" aria-labelledby="AddModalLabel1" aria-hidden="true">
-                                                                        <div class="modal-dialog ">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h6 class="modal-title" id="AddModalLabel1">Edit Assigne</h6>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                        aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <form>
-                                                                                        <div class="row">
-                                                                                            <div class="col-12">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="recipient-name2"
-                                                                                                        class="col-form-label">Assigne To:</label>
-                                                                                                    <input type="text" class="form-control" id="recipient-name2">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Save</button>
-                                                                                    <button type="button" class="btn btn-primary">Cancel</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-completed-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Creating Home Page Website </a>
-                                                            <p class="mb-3">Status : <span class="badge bg-success">Completed</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-success-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal2"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal2" tabindex="-1" aria-labelledby="AddModalLabel2" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel2">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name3"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name3">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-pending-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Data table Design</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-info">Pending</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal3"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal3" tabindex="-1" aria-labelledby="AddModalLabel3" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel3">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name4"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name4">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-completed-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Design Horizontal Layout</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-success">completed</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-success-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal4"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal4" tabindex="-1" aria-labelledby="AddModalLabel4" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel4">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name5"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name5">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-inprogress-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Fix  Header issue</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-pink">Inprogress</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal5"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal5" tabindex="-1" aria-labelledby="AddModalLabel5" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel5">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name6"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name6">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-inprogress-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Create a blog post</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-pink">Inprogress</span></p>
-                                                            <div class="d-flex">
-                                                                <p class="mb-0">Assigned To : </p>
-                                                                    <span class="avatar-list-stacked ms-1">
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                        </span>
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                        </span>
-                                                                        <span class="avatar avatar-sm avatar-rounded">
-                                                                            <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                        </span>
-                                                                    </span>
-                                                                    <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal6"><i class="ri-add-fill"></i></button></span>
-                                                                    <div class="modal fade" id="addpromodal6" tabindex="-1" aria-labelledby="AddModalLabel6" aria-hidden="true">
-                                                                        <div class="modal-dialog ">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <h6 class="modal-title" id="AddModalLabel6">Edit Assigne</h6>
-                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                        aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <form>
-                                                                                        <div class="row">
-                                                                                            <div class="col-12">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="recipient-name7"
-                                                                                                        class="col-form-label">Assigne To:</label>
-                                                                                                    <input type="text" class="form-control" id="recipient-name7">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Save</button>
-                                                                                    <button type="button" class="btn btn-primary">Cancel</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                        
+                                        <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
+                                            <div class="row">
 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-pending-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Testing</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-info">pending</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-secondary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal7"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal7" tabindex="-1" aria-labelledby="AddModalLabel7" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel7">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
+                                                @foreach($slc_assistindo as $dados )
+                                                    <div class="col-md-6 task-card">
+                                                        <div class="card custom-card task-pending-card">
+                                                            <div class="card-body">
+                                                                
+                                                                <div class="row">
+                                                                    <div class="col-4">
+                                                                        
+                                                                        @if($dados->nota == '10')
+                                                                            <img src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
+                                                                        @else
+                                                                            <img src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
+                                                                        @endif
+                                                                        
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        
+                                                                        <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">{{$dados->nome_anime->nome}}</a>
+                                                                        <hr>
+                                                                        
+                                                                        @if ( $dados->nome_anime->data_semana > $dataAtual)
+                                                                            <div class="progress progress-lg">
+                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
                                                                             </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name8"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name8">
+                                                                        @elseif ( $dados->nome_anime->data_semana == $dataAtual )
+                                                                            <div class="progress progress-lg">
+                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                            </div>
+                                                                        @else
+                                                                            <div class="progress progress-lg">
+                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <?php $next_ep = $dados->episodio + 1; ?>
+                                                                        <p class="mb-3 mt-3">Próximo Ep: <span style="color:#1aff1a;">{{$next_ep}} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
+
+                                                                        <div class="d-flex align-items-center mt-3">
+                                                                            <p class="mb-0">Assigned To :</p>
+                                                                                <span class="avatar-list-stacked ms-1">
+                                                                                    <span class="avatar avatar-sm avatar-rounded">
+                                                                                        <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
+                                                                                    </span>
+                                                                                    <span class="avatar avatar-sm avatar-rounded">
+                                                                                        <img src="{{ URL::asset('images/faces/8.jpg') }}" alt="img">
+                                                                                    </span>
+                                                                                    <span class="avatar avatar-sm avatar-rounded">
+                                                                                        <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
+                                                                                    </span>
+                                                                                </span>
+                                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-secondary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal1"><i class="ri-add-fill"></i></button></span>
+                                                                                <div class="modal fade" id="addpromodal1" tabindex="-1" aria-labelledby="AddModalLabel1" aria-hidden="true">
+                                                                                    <div class="modal-dialog ">
+                                                                                        <div class="modal-content">
+                                                                                            <div class="modal-header">
+                                                                                                <h6 class="modal-title" id="AddModalLabel1">Edit Assigne</h6>
+                                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                                                    aria-label="Close"></button>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <form>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="mb-3">
+                                                                                                                <label for="recipient-name2"
+                                                                                                                    class="col-form-label">Assigne To:</label>
+                                                                                                                <input type="text" class="form-control" id="recipient-name2">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button" class="btn btn-secondary"
+                                                                                                    data-bs-dismiss="modal">Save</button>
+                                                                                                <button type="button" class="btn btn-primary">Cancel</button>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
+                                                                                </div>
                                                                         </div>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-completed-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Fix the Data Table Issue</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-success">Completed</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal8"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal8" tabindex="-1" aria-labelledby="AddModalLabel8" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel8">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name9"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name9">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-pending-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Fix the Data Table Issue</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-info">pending</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal9"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal9" tabindex="-1" aria-labelledby="AddModalLabel9" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel9">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name10"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name10">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-inprogress-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Data table Design</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-pink">Inprogress</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal10"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal10" tabindex="-1" aria-labelledby="AddModalLabel10" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel10">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name11"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name11">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-pending-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Fix the Data Table Issue</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-info">pending</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal11"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal11" tabindex="-1" aria-labelledby="AddModalLabel11" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel11">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name12"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name12">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class=" col-md-6 task-card">
-                                                    <div class="card custom-card task-inprogress-card">
-                                                        <div class="card-body">
-                                                            <a href="javascript:void(0);" class="fs-14 fw-semibold mb-3 d-flex align-items-center">Home page design</a>
-                                                            <p class="mb-3">Status : <span class="badge bg-pink">Inprogress</span></p>
-                                                            <div class="d-flex align-items-center">
-                                                                <p class="mb-0">Assigned To :</p>
-                                                                <span class="avatar-list-stacked ms-1">
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/8.jpg" alt="img">
-                                                                    </span>
-                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                        <img src="../assets/images/faces/2.jpg" alt="img">
-                                                                    </span>
-                                                                </span>
-                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal12"><i class="ri-add-fill"></i></button></span>
-                                                                <div class="modal fade" id="addpromodal12" tabindex="-1" aria-labelledby="AddModalLabel12" aria-hidden="true">
-                                                                    <div class="modal-dialog ">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h6 class="modal-title" id="AddModalLabel12">Edit Assigne</h6>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                    aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form>
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="recipient-name1"
-                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                <input type="text" class="form-control" id="recipient-name1">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+                                                
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade p-0 border-0" id="followers-tab-pane"
-                                            role="tabpanel" aria-labelledby="followers-tab" tabindex="0">
+                                        
+                                        <div class="tab-pane fade p-0 border-0" id="followers-tab-pane" role="tabpanel" aria-labelledby="followers-tab" tabindex="0">
                                             <div class="row">
                                                 <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12">
                                                     <div class="card custom-card shadow-none border">
                                                         <div class="card-body p-4">
                                                             <div class="text-center">
                                                                 <span class="avatar avatar-xl avatar-rounded">
-                                                                    <img src="../assets/images/faces/2.jpg" alt="">
+                                                                    <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="">
                                                                 </span>
                                                                 <div class="mt-2">
                                                                     <p class="mb-0 fw-semibold">Samantha May</p>
@@ -1149,7 +676,7 @@
                                                         <div class="card-body p-4">
                                                             <div class="text-center">
                                                                 <span class="avatar avatar-xl avatar-rounded">
-                                                                    <img src="../assets/images/faces/15.jpg" alt="">
+                                                                    <img src="{{ URL::asset('images/faces/15.jpg') }}" alt="">
                                                                 </span>
                                                                 <div class="mt-2">
                                                                     <p class="mb-0 fw-semibold">Andrew Garfield</p>
@@ -1171,7 +698,7 @@
                                                         <div class="card-body p-4">
                                                             <div class="text-center">
                                                                 <span class="avatar avatar-xl avatar-rounded">
-                                                                    <img src="../assets/images/faces/5.jpg" alt="">
+                                                                    <img src="{{ URL::asset('images/faces/5.jpg') }}" alt="">
                                                                 </span>
                                                                 <div class="mt-2">
                                                                     <p class="mb-0 fw-semibold">Jessica Cashew</p>
@@ -1322,122 +849,16 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </div>    
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-xxl-3">
-
-                <div class="card custom-card">
-                    <div class="card-header">
-                        <div class="card-title">Followers</div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group followers-list">
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="../assets/images/faces/1.jpg" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Alicia Sierra</p>
-                                        <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="../assets/images/faces/3.jpg" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Samantha Mery</p>
-                                        <span class="fs-11 text-muted op-7">samanthamery@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="../assets/images/faces/6.jpg" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Juliana Pena</p>
-                                        <span class="fs-11 text-muted op-7">juliapena555@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="../assets/images/faces/15.jpg" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Adam Smith</p>
-                                        <span class="fs-11 text-muted op-7">adamsmith99@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="../assets/images/faces/13.jpg" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Farhaan Amhed</p>
-                                        <span class="fs-11 text-muted op-7">farhaanahmed989@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card custom-card">
-                    <div class="card-header">
-                        <div class="card-title">Our Latest New</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="media media-xs overflow-visible">
-                            <img class="avatar bradius avatar-xl me-3" src="../assets/images/faces/12.jpg" alt="avatar-img">
-                            <div class="media-body valign-middle">
-                                <a href="javascript:void(0)" class="fw-semibold text-dark">John Paige</a>
-                                <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
-                            </div>
-                        </div>
-                        <div class="media media-xs overflow-visible mt-4">
-                            <img class="avatar bradius avatar-xl me-3" src="../assets/images/faces/2.jpg" alt="avatar-img">
-                            <div class="media-body valign-middle">
-                                <a href="javascript:void(0)" class="fw-semibold text-dark">Peter Hill</a>
-                                <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
-                            </div>
-                        </div>
-                        <div class="media media-xs overflow-visible mt-4">
-                            <img class="avatar bradius avatar-xl me-3" src="../assets/images/faces/9.jpg" alt="avatar-img">
-                            <div class="media-body valign-middle">
-                                <a href="javascript:void(0)" class="fw-semibold text-dark">Irene Harris</a>
-                                <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
-                            </div>
-                        </div>
-                        <div class="media media-xs overflow-visible mt-4">
-                            <img class="avatar bradius avatar-xl me-3" src="../assets/images/faces/4.jpg" alt="avatar-img">
-                            <div class="media-body valign-middle">
-                                <a href="javascript:void(0)" class="fw-semibold text-dark">Harry Fisher</a>
-                                <p class="text-muted mb-0">There are many variations of passages of Lorem Ipsum available ...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
         </div>
 
     </template>
@@ -1457,7 +878,7 @@
                     },
                 },
                 mounted(){
-                  this.olamundo()  
+//                  this.olamundo()  
                 },
             });
         </script>
