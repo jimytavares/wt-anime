@@ -75,72 +75,29 @@
                     </div>
                 </div>
                 
+                {{-- .parar-anime --}}
                 <div class="card custom-card">
                     <div class="card-header">
-                        <div class="card-title">Followers</div>
+                        <div class="card-title">Parar Anime</div>
                     </div>
                     <div class="card-body">
                         <ul class="list-group followers-list">
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="{{ URL::asset('images/faces/1.jpg') }}" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Alicia Sierra</p>
-                                        <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
+                            
+                            @foreach($slc_assistindoStop as $dados)
+                                <li class="list-group-item">
+                                    <div class="d-sm-flex align-items-top">
+                                        <span class="avatar avatar-sm">
+                                            <img src="{{ URL::asset('images/faces/1.jpg') }}" alt="img">
+                                        </span>
+                                        <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                            <p class="mb-0 lh-1">{{$dados->nome_anime->nome}}</p>
+                                            <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
+                                        </div>
+                                        <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
                                     </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="{{ URL::asset('images/faces/3.jpg') }}" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Samantha Mery</p>
-                                        <span class="fs-11 text-muted op-7">samanthamery@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="{{ URL::asset('images/faces/6.jpg') }}" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Juliana Pena</p>
-                                        <span class="fs-11 text-muted op-7">juliapena555@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="{{ URL::asset('images/faces/15.jpg') }}" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Adam Smith</p>
-                                        <span class="fs-11 text-muted op-7">adamsmith99@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="d-sm-flex align-items-top">
-                                    <span class="avatar avatar-sm">
-                                        <img src="{{ URL::asset('images/faces/13.jpg') }}" alt="img">
-                                    </span>
-                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">Farhaan Amhed</p>
-                                        <span class="fs-11 text-muted op-7">farhaanahmed989@gmail.com</span>
-                                    </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
+                            
                         </ul>
                     </div>
                 </div>
@@ -590,51 +547,62 @@
                                                                         @endif
 
                                                                         <?php $next_ep = $dados->episodio + 1; ?>
-                                                                        <p class="mb-3 mt-3">Próximo Ep: <span style="color:#1aff1a;">{{$next_ep}} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
-
+                                                                        
+                                                                        <p class="mb-3 mt-3">Próximo Ep: <span class="badge bg-info">#{episodio} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
+                                                                        
                                                                         <div class="d-flex align-items-center mt-3">
+                                                                            
                                                                             <p class="mb-0">Assigned To :</p>
-                                                                                <span class="avatar-list-stacked ms-1">
-                                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                                        <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
-                                                                                    </span>
-                                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                                        <img src="{{ URL::asset('images/faces/8.jpg') }}" alt="img">
-                                                                                    </span>
-                                                                                    <span class="avatar avatar-sm avatar-rounded">
-                                                                                        <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
-                                                                                    </span>
+                                                                            
+                                                                            <span class="avatar-list-stacked ms-1">
+                                                                                <span class="avatar avatar-sm avatar-rounded">
+                                                                                    <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
                                                                                 </span>
-                                                                                <span class="me-2"><button class="btn btn-sm btn-icon btn-wave btn-secondary-light waves-effect waves-light" data-bs-toggle="modal"  data-bs-target="#addpromodal1"><i class="ri-add-fill"></i></button></span>
-                                                                                <div class="modal fade" id="addpromodal1" tabindex="-1" aria-labelledby="AddModalLabel1" aria-hidden="true">
-                                                                                    <div class="modal-dialog ">
-                                                                                        <div class="modal-content">
-                                                                                            <div class="modal-header">
-                                                                                                <h6 class="modal-title" id="AddModalLabel1">Edit Assigne</h6>
-                                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                                    aria-label="Close"></button>
-                                                                                            </div>
-                                                                                            <div class="modal-body">
-                                                                                                <form>
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-12">
-                                                                                                            <div class="mb-3">
-                                                                                                                <label for="recipient-name2"
-                                                                                                                    class="col-form-label">Assigne To:</label>
-                                                                                                                <input type="text" class="form-control" id="recipient-name2">
-                                                                                                            </div>
+                                                                                <span class="avatar avatar-sm avatar-rounded">
+                                                                                    <img src="{{ URL::asset('images/faces/8.jpg') }}" alt="img">
+                                                                                </span>
+                                                                                <span class="avatar avatar-sm avatar-rounded">
+                                                                                    <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
+                                                                                </span>
+                                                                            </span>
+                                                                            
+                                                                            <span class="me-2">
+                                                                                <a @click="decreAnime( {{$dados->id_anime}}, {{$dados->id}} )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
+                                                                            </span>
+                                                                            <span class="me-2">
+                                                                                <a @click="plusAnime( {{$dados->id_anime}}, {{$dados->id}} )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
+                                                                            </span>
+                                                                            
+                                                                            <div class="modal fade" id="addpromodal1" tabindex="-1" aria-labelledby="AddModalLabel1" aria-hidden="true">
+                                                                                <div class="modal-dialog ">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h6 class="modal-title" id="AddModalLabel1">Edit Assigne</h6>
+                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                                                aria-label="Close"></button>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <form>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-12">
+                                                                                                        <div class="mb-3">
+                                                                                                            <label for="recipient-name2"
+                                                                                                                class="col-form-label">Assigne To:</label>
+                                                                                                            <input type="text" class="form-control" id="recipient-name2">
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                </form>
-                                                                                            </div>
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="button" class="btn btn-secondary"
-                                                                                                    data-bs-dismiss="modal">Save</button>
-                                                                                                <button type="button" class="btn btn-primary">Cancel</button>
-                                                                                            </div>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-secondary"
+                                                                                                data-bs-dismiss="modal">Save</button>
+                                                                                            <button type="button" class="btn btn-primary">Cancel</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                     
@@ -871,14 +839,44 @@
                 el:'#base-vue',
                 data:{
                     teste2: '{{$getUserData["user_name"]}}',
+                    episodio: '{{$next_ep}}',
+                    soma_ep: 1, 
                 },
                 methods: {
                     olamundo(){
                         alert(this.teste2)
                     },
+                    decreAnime(idAnime, idAssist){
+                        
+                        let url = "{{ route('decreAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
+                        axios.put(url.replace('123', idAnime).replace('1234', idAssist))
+                        .then(response => {
+                            console.log('decrement feito');
+                            this.episodio = response.data.newEP + 1
+                        })
+                        .catch(error => {
+                            console.error('Error incrementing value:', error);
+                        });
+                    },
+                    plusAnime(idAnime, idAssist){
+                        
+                        let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
+                        axios.put(url.replace('123', idAnime).replace('1234', idAssist))
+                        .then(response => {
+                            console.log('decrement feito');
+                            this.episodio = response.data.newEP + 1
+                        })
+                        .catch(error => {
+                            console.error('Error incrementing value:', error);
+                        });
+                    },
+                    //decreAnime(idAnime, idAssist) {
+                        //console.log('ID do Anime:', idAnime);
+                        //console.log('ID do Assist:', idAssist);
+                    //},
                 },
                 mounted(){
-//                  this.olamundo()  
+                  //this.olamundo()  
                 },
             });
         </script>

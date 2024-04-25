@@ -33,6 +33,7 @@ class ProfilleController extends Controller
         $session_user = auth()->user();
         $id_user = $session_user->id;
         
+        $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
         $slc_assistindo = assistindo::where('id_user', $id_user)
             ->join('animes', 'animes.id', '=', 'assistindo.id_anime')
             ->orderBy('animes.data_semana')
@@ -40,8 +41,27 @@ class ProfilleController extends Controller
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
     
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual"]));
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop"]));
     }
     
+    public function plusAnime($id_anime, $id_assist){
+        
+        assistindo::findOrFail($id_assist)->increment('episodio', 1);
+        
+        $slc_assistindo = assistindo::findOrFail($id_assist);
+        $assistindoEp = $slc_assistindo->episodio;
+
+        return response()->json(['newEP' => $assistindoEp]);
+    }
+    
+    public function decreAnime($id_anime, $id_assist){
+        
+        assistindo::findOrFail($id_assist)->decrement('episodio', 1);
+        
+        $slc_assistindo = assistindo::findOrFail($id_assist);
+        $assistindoEp = $slc_assistindo->episodio;
+        
+        return response()->json(['newEP' => $assistindoEp]);
+    }
     
 }

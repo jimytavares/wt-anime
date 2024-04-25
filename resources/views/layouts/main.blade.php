@@ -1021,31 +1021,47 @@
     
     <!-- Popper JS -->
     <script src="{{ asset('libs/@popperjs/core/umd/popper.min.js') }}"></script>
+
     <!-- Bootstrap JS -->
     <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <!-- Defaultmenu JS -->
     <script src="{{ asset('js/defaultmenu.min.js') }}"></script>
+
     <!-- Node Waves JS-->
     <script src="{{ asset('libs/node-waves/waves.min.js') }}"></script>
+
     <!-- Sticky JS -->
     <script src="{{ asset('js/sticky.js') }}"></script>
+
     <!-- Simplebar JS -->
     <script src="{{ asset('libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('js/simplebar.js') }}"></script>
+
     <!-- Color Picker JS -->
     <script src="{{ asset('libs/@simonwep/pickr/pickr.es5.min.js') }}"></script>
+
+
+
     <!-- JSVector Maps JS -->
     <script src="{{ asset('libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
+
     <!-- JSVector Maps MapsJS -->
     <script src="{{ asset('libs/jsvectormap/maps/world-merc.js') }}"></script>
+
     <!-- Apex Charts JS -->
     <script src="{{ asset('libs/apexcharts/apexcharts.min.js') }}"></script>
+
     <!-- Chartjs Chart JS -->
     <script src="{{ asset('libs/chart.js/chart.min.js') }}"></script>
+
     <!-- index -->
     <script src="{{ asset('js/index.js') }}"></script>
+
+    
     <!-- Custom-Switcher JS -->
     <script src="{{ asset('js/custom-switcher.min.js') }}"></script>
+
     <!-- Custom JS -->
     <script src="{{ asset('js/custom.js') }}"></script>
     
