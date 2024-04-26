@@ -511,7 +511,8 @@
                                         
                                         <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
                                             <div class="row">
-
+                                                
+                                                <p>#{episodios}</p>
                                                 @foreach($slc_assistindo as $dados )
                                                     <div class="col-md-6 task-card">
                                                         <div class="card custom-card task-pending-card">
@@ -548,7 +549,7 @@
 
                                                                         <?php $next_ep = $dados->episodio + 1; ?>
                                                                         
-                                                                        <p class="mb-3 mt-3">Próximo Ep: <span class="badge bg-info">#{episodio} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
+                                                                        <p class="mb-3 mt-3">Próximo Ep: <span class="badge bg-info"> - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
                                                                         
                                                                         <div class="d-flex align-items-center mt-3">
                                                                             
@@ -839,8 +840,9 @@
                 el:'#base-vue',
                 data:{
                     teste2: '{{$getUserData["user_name"]}}',
-                    episodio: '{{$next_ep}}',
-                    soma_ep: 1, 
+                    //episodio: '{{$next_ep}}',
+                    //convertado objetos em uma string JSON
+                    episodios: {!! json_encode($slc_assistindoAll) !!},
                 },
                 methods: {
                     olamundo(){
@@ -848,23 +850,26 @@
                     },
                     decreAnime(idAnime, idAssist){
                         
+                        let item = this.episodios.find(item => item.id === idAssist);
                         let url = "{{ route('decreAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
+                        
                         .then(response => {
                             console.log('decrement feito');
-                            this.episodio = response.data.newEP + 1
+                            item.episodio = response.data.newEP;
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);
                         });
+                        
                     },
                     plusAnime(idAnime, idAssist){
                         
                         let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         .then(response => {
-                            console.log('decrement feito');
-                            this.episodio = response.data.newEP + 1
+                            console.log('decrement feito', response.data);
+                            this.episodio = response.data.newEP;
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);

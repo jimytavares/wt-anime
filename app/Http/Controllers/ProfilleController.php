@@ -33,6 +33,11 @@ class ProfilleController extends Controller
         $session_user = auth()->user();
         $id_user = $session_user->id;
         
+        //recupera todos os itens da coluna de uma tabela
+        $slc_assistEpisodios = assistindo::orderBy('id', 'asc')->pluck('episodio');
+        
+        $slc_assistindoAll = assistindo::orderBy('id', 'desc')->get();
+        
         $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
         $slc_assistindo = assistindo::where('id_user', $id_user)
             ->join('animes', 'animes.id', '=', 'assistindo.id_anime')
@@ -40,8 +45,8 @@ class ProfilleController extends Controller
             ->select('assistindo.*')
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
-    
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop"]));
+        
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "slc_assistEpisodios", "slc_assistindoAll"]));
     }
     
     public function plusAnime($id_anime, $id_assist){
