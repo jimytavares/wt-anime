@@ -513,105 +513,97 @@
                                             <div class="row">
                                                 
                                                 <p>#{episodios}</p>
-                                                @foreach($slc_assistindo as $dados )
-                                                    <div class="col-md-6 task-card">
-                                                        <div class="card custom-card task-pending-card">
-                                                            <div class="card-body">
-                                                                
-                                                                <div class="row">
-                                                                    <div class="col-4">
-                                                                        
-                                                                        @if($dados->nota == '10')
-                                                                            <img src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
-                                                                        @else
-                                                                            <img src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
-                                                                        @endif
-                                                                        
-                                                                    </div>
-                                                                    <div class="col">
-                                                                        
-                                                                        <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">{{$dados->nome_anime->nome}}</a>
-                                                                        <hr>
-                                                                        
-                                                                        @if ( $dados->nome_anime->data_semana > $dataAtual)
-                                                                            <div class="progress progress-lg">
-                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
-                                                                            </div>
-                                                                        @elseif ( $dados->nome_anime->data_semana == $dataAtual )
-                                                                            <div class="progress progress-lg">
-                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
-                                                                            </div>
-                                                                        @else
-                                                                            <div class="progress progress-lg">
-                                                                              <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep {{$dados->episodio}} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
-                                                                            </div>
-                                                                        @endif
+                                                
+                                                {{-- .VUE/JS --}}
+                                                <div v-for="dados in episodios" class="col-md-6 task-card">
+                                                    <div class="card custom-card task-pending-card">
+                                                        <div class="card-body">
 
-                                                                        <?php $next_ep = $dados->episodio + 1; ?>
-                                                                        
-                                                                        <p class="mb-3 mt-3">Próximo Ep: <span class="badge bg-info"> - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
-                                                                        
-                                                                        <div class="d-flex align-items-center mt-3">
-                                                                            
-                                                                            <p class="mb-0">Assigned To :</p>
-                                                                            
-                                                                            <span class="avatar-list-stacked ms-1">
-                                                                                <span class="avatar avatar-sm avatar-rounded">
-                                                                                    <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
-                                                                                </span>
-                                                                                <span class="avatar avatar-sm avatar-rounded">
-                                                                                    <img src="{{ URL::asset('images/faces/8.jpg') }}" alt="img">
-                                                                                </span>
-                                                                                <span class="avatar avatar-sm avatar-rounded">
-                                                                                    <img src="{{ URL::asset('images/faces/2.jpg') }}" alt="img">
-                                                                                </span>
-                                                                            </span>
-                                                                            
-                                                                            <span class="me-2">
-                                                                                <a @click="decreAnime( {{$dados->id_anime}}, {{$dados->id}} )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
-                                                                            </span>
-                                                                            <span class="me-2">
-                                                                                <a @click="plusAnime( {{$dados->id_anime}}, {{$dados->id}} )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
-                                                                            </span>
-                                                                            
-                                                                            <div class="modal fade" id="addpromodal1" tabindex="-1" aria-labelledby="AddModalLabel1" aria-hidden="true">
-                                                                                <div class="modal-dialog ">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h6 class="modal-title" id="AddModalLabel1">Edit Assigne</h6>
-                                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                                                aria-label="Close"></button>
-                                                                                        </div>
-                                                                                        <div class="modal-body">
-                                                                                            <form>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-12">
-                                                                                                        <div class="mb-3">
-                                                                                                            <label for="recipient-name2"
-                                                                                                                class="col-form-label">Assigne To:</label>
-                                                                                                            <input type="text" class="form-control" id="recipient-name2">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </form>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary"
-                                                                                                data-bs-dismiss="modal">Save</button>
-                                                                                            <button type="button" class="btn btn-primary">Cancel</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            
-                                                                        </div>
-                                                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-4">
+                                                                    
+                                                                    <img v-if="dados.nota == '10'" src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
+                                                                    <img v-else src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
                                                                     
                                                                 </div>
+                                                                <div class="col">
+
+                                                                    <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">#{dados.nome_anime.nome}</a>
+                                                                    <hr>
+
+                                                                    @if ( $dados->nome_anime->data_semana > $dataAtual)
+                                                                        <div class="progress progress-lg">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        </div>
+                                                                    @elseif ( $dados->nome_anime->data_semana == $dataAtual )
+                                                                        <div class="progress progress-lg">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        </div>
+                                                                    @else
+                                                                        <div class="progress progress-lg">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        </div>
+                                                                    @endif
+
+                                                                    <?php $next_ep = $dados->episodio + 1; ?>
+
+                                                                    <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
+
+                                                                    <div class="d-flex align-items-center mt-3">
+
+                                                                        <p class="mb-0">Nota #{dados.nota}:</p>
+
+                                                                        <span v-if="dados.nota === 10" class="avatar-list-stacked ms-1">
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                        </span>
+                                                                        
+                                                                        <span v-else-if="dados.nota === 9 || dados.nota === 8" class="avatar-list-stacked ms-1">
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                        </span>
+                                                                        
+                                                                        <span v-else-if="dados.nota === 7 || dados.nota === 6" class="avatar-list-stacked ms-1">
+                                                                            <span class="avatar avatar-sm avatar-rounded">
+                                                                                <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                            </span>
+                                                                        </span>
+
+                                                                        <!--
+                                                                        <span class="avatar-list-stacked ms-1">
+                                                                          <span v-for="i in parseInt(dados.nota)" :key="i" class="avatar avatar-sm avatar-rounded">
+                                                                            <i class="ri-star-line" style="color:red; font-size:18px;"></i>
+                                                                          </span>
+                                                                        </span> -->
+
+                                                                        <div class="" style="margin-left:10px;">
+                                                                            <span class="me-2">
+                                                                                <a @click="decreAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
+                                                                            </span>
+                                                                            <span class="me-2">
+                                                                                <a @click="plusAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
+                                                                            </span>
+                                                                            <button class="btn btn-success-light btn-sm btn-hover btn-hover-animate">Assistir</button>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
+
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                </div>
                                                 
                                             </div>
                                         </div>
@@ -842,7 +834,8 @@
                     teste2: '{{$getUserData["user_name"]}}',
                     //episodio: '{{$next_ep}}',
                     //convertado objetos em uma string JSON
-                    episodios: {!! json_encode($slc_assistindoAll) !!},
+                    episodios: {!! json_encode($slc_assistindo) !!},
+                    items: ['item1', 'item2', 'item3'],
                 },
                 methods: {
                     olamundo(){
@@ -865,11 +858,13 @@
                     },
                     plusAnime(idAnime, idAssist){
                         
+                        let item = this.episodios.find(item => item.id === idAssist);
                         let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
+                        
                         .then(response => {
                             console.log('decrement feito', response.data);
-                            this.episodio = response.data.newEP;
+                            item.episodio = response.data.newEP;
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);
