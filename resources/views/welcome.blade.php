@@ -50,7 +50,7 @@
                     <div class="card-body p-0 main-profile-info">
                         <div class="d-flex align-items-center justify-content-between w-100">
                             <div class="py-3 border-end w-100 text-center">
-                                <p class="fw-bold fs-20  text-shadow mb-0">113</p>
+                                <p class="fw-bold fs-20  text-shadow mb-0">{{$countAssistindo}}</p>
                                 <p class="mb-0 fs-12 text-muted ">Assistindo</p>
                             </div>
                             <div class="py-3 border-end w-100 text-center">
@@ -93,7 +93,7 @@
                                             <p class="mb-0 lh-1">{{$dados->nome_anime->nome}}</p>
                                             <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
                                         </div>
-                                        <button class="btn btn-light btn-wave btn-sm ms-auto">Follow</button>
+                                        <button class="btn btn-light btn-wave btn-sm ms-auto">Parar</button>
                                     </div>
                                 </li>
                             @endforeach

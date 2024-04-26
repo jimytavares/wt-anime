@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\animes;
@@ -30,6 +31,8 @@ class ProfilleController extends Controller
         $getUserData = $this->getUserData();
         $dataAtual = date('Y-m-d');
         
+        $countAssistindo = DB::table('assistindo')->count();
+        
         $session_user = auth()->user();
         $id_user = $session_user->id;
         
@@ -46,7 +49,7 @@ class ProfilleController extends Controller
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
         
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "slc_assistEpisodios", "slc_assistindoAll"]));
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "slc_assistEpisodios", "slc_assistindoAll"]));
     }
     
     public function plusAnime($id_anime, $id_assist){
