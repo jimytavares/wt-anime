@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\animes;
 use App\Models\assistindo;
+use App\Models\parados;
 
 class ProfilleController extends Controller
 {
