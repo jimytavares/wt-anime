@@ -3,29 +3,11 @@
 @section('title', '일본 Watch Animes')
 
 @section('content')
-
    
-    {{-- .title --}}
     <template>
-        <div class="page-header">
-
-                <h1 class="page-title my-auto">#{teste2}</h1>
-
-                <input type="text" v-model="teste2">
-                <button type="button" @click="olamundo()">teste</button>
-
-            <div>
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item">
-                        <a href="javascript:void(0)">Pages</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
-                </ol>
-            </div>
-        </div>
-
+        
         {{-- .info --}}
-        <div class="row">
+        <div class="row mt-4">
 
             <div class="col-xxl-3">
 
@@ -445,74 +427,17 @@
                                         </div>
                                         
                                         <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
-                                            <div class="row">
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-40.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-40.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-41.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-41.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-42.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-42.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-43.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-43.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-44.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-44.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-45.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-45.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-46.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-46.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-60.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-60.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-26.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-26.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-32.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-32.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-30.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-30.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                                <div class="col-lg-4 col-md-6 col-sm-12">
-                                                    <a href="../assets/images/media/media-31.jpg" class="glightbox card" data-gallery="gallery1">
-                                                        <img src="../assets/images/media/media-31.jpg" alt="image" >
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            <p>#{episodios}</p>
+                                            
+                                             <h1 class="page-title my-auto">#{teste2}</h1>
+
+                                            <input type="text" v-model="teste2">
+                                            <button type="button" @click="olamundo()">teste</button>
                                         </div>
                                         
                                         <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
                                             <div class="row">
                                                 
-                                                <p>#{episodios}</p>
                                                 
                                                 {{-- .VUE/JS --}}
                                                 <div v-for="dados in episodios" class="col-md-6 task-card">
@@ -521,9 +446,8 @@
 
                                                             <div class="row">
                                                                 <div class="col-4">
-                                                                    
-                                                                    <img v-if="dados.nota == '10'" src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
-                                                                    <img v-else src="{{URL::asset('storage/animes/' . $dados->nome_anime->image )}}" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
+                                                                    <img v-if="dados.nota == '10'" :src="'{{ URL::asset('storage/animes/') }}' + '/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
+                                                                    <img v-else :src="'{{ URL::asset('storage/animes/') }}' + '/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
                                                                     
                                                                 </div>
                                                                 <div class="col">
@@ -532,22 +456,22 @@
                                                                     <hr>
 
                                                                     @if ( $dados->nome_anime->data_semana > $dataAtual)
-                                                                        <div class="progress progress-lg">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        <div class="progress progress-lg progress-animate">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
                                                                         </div>
                                                                     @elseif ( $dados->nome_anime->data_semana == $dataAtual )
-                                                                        <div class="progress progress-lg">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        <div class="progress progress-lg progress-animate">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
                                                                         </div>
                                                                     @else
-                                                                        <div class="progress progress-lg">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - {{date('d.m.Y', strtotime($dados->updated_at))}}</div>
+                                                                        <div class="progress progress-lg progress-animate">
+                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
                                                                         </div>
                                                                     @endif
 
                                                                     <?php $next_ep = $dados->episodio + 1; ?>
 
-                                                                    <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - {{date('d.m.Y', strtotime($dados->nome_anime->data_semana)) }}</span></p>
+                                                                    <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
 
                                                                     <div class="d-flex align-items-center mt-3">
 
@@ -580,7 +504,7 @@
                                                                             </span>
                                                                         </span>
 
-                                                                        <!--
+                                                                        <!-- loop de 1 pra cada estrela
                                                                         <span class="avatar-list-stacked ms-1">
                                                                           <span v-for="i in parseInt(dados.nota)" :key="i" class="avatar avatar-sm avatar-rounded">
                                                                             <i class="ri-star-line" style="color:red; font-size:18px;"></i>
@@ -594,7 +518,7 @@
                                                                             <span class="me-2">
                                                                                 <a @click="plusAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
                                                                             </span>
-                                                                            <button class="btn btn-success-light btn-sm btn-hover btn-hover-animate">Assistir</button>
+                                                                            <a :href="dados.link" target="_blank"><button class="btn btn-success-light btn-sm btn-hover btn-hover-animate">Assistir</button></a>
                                                                         </div>
 
                                                                     </div>

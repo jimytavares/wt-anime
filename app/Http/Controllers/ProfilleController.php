@@ -73,4 +73,50 @@ class ProfilleController extends Controller
         return response()->json(['newEP' => $assistindoEp]);
     }
     
+    public function formAnime(){
+        
+        $getUserData = $this->getUserData();
+        $DataAtual = date('Y');
+        
+        $slc_animeAll = animes::orderBy('id', 'desc')->get();
+        $table_animes = animes::whereJsonContains('genero', ["Fantasia"])->get();
+        
+        $anime = animes::all();
+        $campos = [];
+        
+        foreach ($anime as $animes) {
+            $campos[] = ['nome' => $animes->nome, 'id' => $animes->id];
+        }
+        
+        return view('pages.form_anime', compact(["DataAtual", "table_animes", "slc_animeAll", "getUserData", "campos"]));
+    }
+    
+     public function formAnimePost(request $request){
+        
+        $tb_anime = new animes;
+        
+        $tb_anime->nome = $request->nome;
+        $tb_anime->estreia = $request->estreia;
+        $tb_anime->temporada = $request->temporada;
+        $tb_anime->episodio = $request->episodio;
+        $tb_anime->genero = $request->genero;
+        $tb_anime->data_semana = $request->data_semana;
+        $arquivo = $request->file('arquivo');
+        
+       if(isset($arquivo) || !empty($arquivo)){
+            
+            $nomeArquivo = pathinfo($arquivo->getClientOriginalName(), PATHINFO_FILENAME);
+            $extensao = $arquivo->getClientOriginalExtension();
+            $nomeArquivoArmazenado = $nomeArquivo . '_' . time() . '.' . $extensao;
+            $arquivo->storeAs('public/animes', $nomeArquivoArmazenado);
+            $tb_anime->image = $nomeArquivoArmazenado;
+            
+        } else {
+            return response()->json(['error' => 'O arquivo enviado não é válido.']);
+        } 
+        
+        $tb_anime->save();
+        return redirect()->route('formAnime');
+    }
+    
 }

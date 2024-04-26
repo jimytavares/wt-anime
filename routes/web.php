@@ -12,4 +12,8 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::put('/api/plusanime/{id_anime}/{id_assist}', [ProfilleController::class, 'plusAnime'])->name('plusAnime');
     Route::put('/api/decreAmime/{id_anime}/{id_assist}', [ProfilleController::class, 'decreAnime'])->name('decreAnime');
     
+    Route::get('/admin/formanime', [ProfilleController::class, 'formAnime'])->name('formAnime');
+    Route::post('/admin/formanime', [ProfilleController::class, 'formAnimePost'])->name('formAnimePost');
+//    Route::post('/animeAdd2', [ProfileController::class, 'animeAdd2'])->name('animeAdd2');
+    
 });
