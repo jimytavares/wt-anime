@@ -65,20 +65,18 @@
                     <div class="card-body">
                         <ul class="list-group followers-list">
                             
-                            @foreach($slc_assistindoStop as $dados)
-                                <li class="list-group-item">
-                                    <div class="d-sm-flex align-items-top">
-                                        <span class="avatar avatar-sm">
-                                            <img src="{{ URL::asset('images/faces/1.jpg') }}" alt="img">
-                                        </span>
-                                        <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                            <p class="mb-0 lh-1">{{$dados->nome_anime->nome}}</p>
-                                            <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
-                                        </div>
-                                        <button class="btn btn-light btn-wave btn-sm ms-auto">Parar</button>
+                            <li v-for="dados in episodios" class="list-group-item">
+                                <div v-if="dados.nota <= 7" class="d-sm-flex align-items-top">
+                                    <span class="avatar avatar-sm">
+                                        <img :src="'storage/animes/' + dados.nome_anime.image" alt="img">
+                                    </span>
+                                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
+                                        <p class="mb-0 lh-1">#{dados.nome_anime.nome}</p>
+                                        <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
                                     </div>
-                                </li>
-                            @endforeach
+                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Parar</button>
+                                </div>
+                            </li>
                             
                         </ul>
                     </div>
@@ -446,8 +444,8 @@
 
                                                             <div class="row">
                                                                 <div class="col-4">
-                                                                    <img v-if="dados.nota == '10'" :src="'{{ URL::asset('storage/animes/') }}' + '/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
-                                                                    <img v-else :src="'{{ URL::asset('storage/animes/') }}' + '/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
+                                                                    <img v-if="dados.nota == '10'" :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
+                                                                    <img v-else :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
                                                                     
                                                                 </div>
                                                                 <div class="col">
@@ -455,21 +453,15 @@
                                                                     <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">#{dados.nome_anime.nome}</a>
                                                                     <hr>
 
-                                                                    @if ( $dados->nome_anime->data_semana > $dataAtual)
-                                                                        <div class="progress progress-lg progress-animate">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
-                                                                        </div>
-                                                                    @elseif ( $dados->nome_anime->data_semana == $dataAtual )
-                                                                        <div class="progress progress-lg progress-animate">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
-                                                                        </div>
-                                                                    @else
-                                                                        <div class="progress progress-lg progress-animate">
-                                                                          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{$dados->episodio}}0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
-                                                                        </div>
-                                                                    @endif
-
-                                                                    <?php $next_ep = $dados->episodio + 1; ?>
+                                                                    <div v-if="dados.nome_anime.data_semana > dataAtual" class="progress progress-lg progress-animate">
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                    </div>
+                                                                    <div v-else-if="dados.nome_anime.data_semana == dataAtual" class="progress progress-lg progress-animate">
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                    </div>
+                                                                    <div v-else class="progress progress-lg progress-animate">
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                    </div>
 
                                                                     <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
 
@@ -516,7 +508,7 @@
                                                                                 <a @click="decreAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
                                                                             </span>
                                                                             <span class="me-2">
-                                                                                <a @click="plusAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
+                                                                                <a @click="plusAnime( dados.id_anime, dados.id, dados.id_user )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
                                                                             </span>
                                                                             <a :href="dados.link" target="_blank"><button class="btn btn-success-light btn-sm btn-hover btn-hover-animate">Assistir</button></a>
                                                                         </div>
@@ -756,7 +748,7 @@
                 el:'#base-vue',
                 data:{
                     teste2: '{{$getUserData["user_name"]}}',
-                    //episodio: '{{$next_ep}}',
+                    dataAtual: '{{$dataAtual}}',
                     //convertado objetos em uma string JSON
                     episodios: {!! json_encode($slc_assistindo) !!},
                     items: ['item1', 'item2', 'item3'],
@@ -780,7 +772,7 @@
                         });
                         
                     },
-                    plusAnime(idAnime, idAssist){
+                    plusAnime(idAnime, idAssist, idUser){
                         
                         let item = this.episodios.find(item => item.id === idAssist);
                         let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
@@ -789,6 +781,21 @@
                         .then(response => {
                             console.log('decrement feito', response.data);
                             item.episodio = response.data.newEP;
+                            this.plusExp(idUser);
+                        })
+                        .catch(error => {
+                            console.error('Error incrementing value:', error);
+                        });
+                    },
+                    plusExp(idUser){
+                        
+                        let item = this.episodios.find(item => item.id_user === idUser);
+                        let url = "{{ route('plusExp', ['idUser' => '123']) }}";
+                        axios.put(url.replace('123', idUser))
+                        
+                        .then(response => {
+                            console.log('Aumento de EXP');
+                            item.exp = response.data.newExp;
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);

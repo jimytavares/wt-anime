@@ -18,6 +18,6 @@ class parados extends Model
     
     public function nome_anime()
     {
-        return $this->belongsTo(table_anime::class,'id_anime','id');
+        return $this->belongsTo(animes::class,'id_anime','id');
     }
 }

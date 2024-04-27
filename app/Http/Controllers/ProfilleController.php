@@ -59,8 +59,26 @@ class ProfilleController extends Controller
         
         $slc_assistindo = assistindo::findOrFail($id_assist);
         $assistindoEp = $slc_assistindo->episodio;
-
+        
         return response()->json(['newEP' => $assistindoEp]);
+    }
+    
+    public function plusExp($idUser){
+        
+        /* Adicionando exp vinculado ao usuario apos add new anime */
+        user::findOrFail($idUser)->increment('exp', 1);
+        
+        /* verificação de exp para up level e zerar exp batendo os 100exp */
+        $slc_user = user::findOrFail($idUser);
+        $exp_user = $slc_user->exp;
+        if($exp_user >= 100.00){
+            $slc_user->increment('level', 1);
+            $slc_user->decrement('exp', 100);
+        }else{
+            echo 'teste menor';
+        }
+        
+        return response()->json(['newExp' => $exp_user]);
     }
     
     public function decreAnime($id_anime, $id_assist){
