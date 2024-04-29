@@ -109,7 +109,7 @@ class ProfilleController extends Controller
         return view('pages.form_anime', compact(["DataAtual", "table_animes", "slc_animeAll", "getUserData", "campos"]));
     }
     
-     public function formAnimePost(request $request){
+    public function formAnimePost(request $request){
         
         $tb_anime = new animes;
         
@@ -135,6 +135,38 @@ class ProfilleController extends Controller
         
         $tb_anime->save();
         return redirect()->route('formAnime');
+    }
+    
+    public function createParados($id_assist) {
+        
+        if (!is_numeric($id_assist)) {
+            return response()->JSON(['error' => 'Invalid ID'], 404);
+        }
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->JSON(['error' => 'Usuário não autorizado!'], 403);
+        }
+
+        $table_assistidos = assistindo::findOrFail($id_assist);
+
+        $animePausados = new parados;
+        $animePausados->id_anime = $table_assistidos->id_anime;
+        $animePausados->episodio = $table_assistidos->episodio;
+        $animePausados->nota = $table_assistidos->nota;
+        $animePausados->descricao = $table_assistidos->descricao;
+        $animePausados->link = $table_assistidos->link;
+        $animePausados->id_user = $user->id;
+        $animePausados->save();
+
+        $table_assistidos->delete();
+
+        return response()->json([
+            'message' => 'Anime moved to "parados" successfully.',
+            'newStop' => $animePausados,
+            'originalAssistindo' => $table_assistidos
+        ]);
     }
     
 }

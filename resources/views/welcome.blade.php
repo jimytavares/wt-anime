@@ -74,7 +74,7 @@
                                         <p class="mb-0 lh-1">#{dados.nome_anime.nome}</p>
                                         <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
                                     </div>
-                                    <button class="btn btn-light btn-wave btn-sm ms-auto">Parar</button>
+                                    <a @click="stopAnime(dados.id)" class="btn btn-light btn-wave btn-sm ms-auto">Parar</a>
                                 </div>
                             </li>
                             
@@ -760,6 +760,7 @@
                     decreAnime(idAnime, idAssist){
                         
                         let item = this.episodios.find(item => item.id === idAssist);
+                        
                         let url = "{{ route('decreAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
@@ -775,6 +776,7 @@
                     plusAnime(idAnime, idAssist, idUser){
                         
                         let item = this.episodios.find(item => item.id === idAssist);
+                        
                         let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
@@ -800,6 +802,22 @@
                         .catch(error => {
                             console.error('Error incrementing value:', error);
                         });
+                    },
+                    stopAnime(idAssist){
+                        
+                        let item = this.episodios.findIndex(item => item.id === idAssist);
+
+                        if (item !== -1) {
+                            let url = "{{ route('createParados', ['id_assist' => '123']) }}";
+                            axios.get(url.replace('123', idAssist))
+
+                            .then(response => {
+                                this.episodios.splice(item, 1);
+                            })
+                            .catch(error => {
+                                console.error('Error incrementing value:', error);
+                            });
+                        }
                     },
                     //decreAnime(idAnime, idAssist) {
                         //console.log('ID do Anime:', idAnime);
