@@ -427,6 +427,9 @@
                                         <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
                                             <p>#{episodios}</p>
                                             
+                                            <p>---------</p>
+                                            <p>#{slc_animes}</p>
+                                            
                                              <h1 class="page-title my-auto">#{teste2}</h1>
 
                                             <input type="text" v-model="teste2">
@@ -751,6 +754,7 @@
                     dataAtual: '{{$dataAtual}}',
                     //convertado objetos em uma string JSON
                     episodios: {!! json_encode($slc_assistindo) !!},
+                    slc_animes: {!! json_encode($slc_animes) !!},
                     items: ['item1', 'item2', 'item3'],
                 },
                 methods: {
@@ -784,6 +788,7 @@
                             console.log('decrement feito', response.data);
                             item.episodio = response.data.newEP;
                             this.plusExp(idUser);
+                            this.plusDate(idAnime);
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);
@@ -792,12 +797,27 @@
                     plusExp(idUser){
                         
                         let item = this.episodios.find(item => item.id_user === idUser);
+                        
                         let url = "{{ route('plusExp', ['idUser' => '123']) }}";
                         axios.put(url.replace('123', idUser))
                         
                         .then(response => {
                             console.log('Aumento de EXP');
                             item.exp = response.data.newExp;
+                        })
+                        .catch(error => {
+                            console.error('Error incrementing value:', error);
+                        });
+                    },
+                    plusDate(idAnime){
+                        
+                        let item = this.slc_animes.find(item => item.id === idAnime);
+                        
+                        let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
+                        axios.put(url.replace('123', idUser))
+                        
+                        .then(response => {
+                            console.log('Plus Date Assist');
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);

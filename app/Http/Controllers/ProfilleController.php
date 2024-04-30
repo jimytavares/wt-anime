@@ -40,6 +40,8 @@ class ProfilleController extends Controller
         //recupera todos os itens da coluna de uma tabela
         $slc_assistEpisodios = assistindo::orderBy('id', 'asc')->pluck('episodio');
         
+        $slc_animes = animes::all();
+        
         $slc_assistindoAll = assistindo::orderBy('id', 'desc')->get();
         
         $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
@@ -50,7 +52,7 @@ class ProfilleController extends Controller
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
         
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "slc_assistEpisodios", "slc_assistindoAll"]));
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "slc_assistEpisodios", "slc_assistindoAll", "slc_animes"]));
     }
     
     public function plusAnime($id_anime, $id_assist){
@@ -165,7 +167,7 @@ class ProfilleController extends Controller
         return response()->json([
             'message' => 'Anime moved to "parados" successfully.',
             'newStop' => $animePausados,
-            'originalAssistindo' => $table_assistidos
+            'itemAssistindo' => $table_assistidos
         ]);
     }
     
