@@ -15,7 +15,7 @@
                     <div class="card-body border-bottom">
                         <div class="d-sm-flex  main-profile-cover">
                             <span class="avatar avatar-xxl online me-3">
-                                <img src="{{ URL::asset('images/faces/5.jpg') }}" alt="" class="avatar avatar-xxl">
+                                <img src="{{ URL::asset('storage/animes/gundam-mercury.webp') }}" alt="" class="avatar avatar-xxl">
                             </span>
                             <div class="flex-fill main-profile-info my-auto">
                                 <h5 class="fw-semibold mb-1 ">{{$getUserData['user_name']}}</h5>
@@ -36,11 +36,11 @@
                                 <p class="mb-0 fs-12 text-muted ">Assistindo</p>
                             </div>
                             <div class="py-3 border-end w-100 text-center">
-                                <p class="fw-bold fs-20  text-shadow mb-0">12.2k</p>
+                                <p class="fw-bold fs-20  text-shadow mb-0">{{$countParados}}</p>
                                 <p class="mb-0 fs-12 text-muted ">Parados</p>
                             </div>
                             <div class="py-3 w-100 text-center">
-                                <p class="fw-bold fs-20  text-shadow mb-0">128</p>
+                                <p class="fw-bold fs-20  text-shadow mb-0">0</p>
                                 <p class="mb-0 fs-12 text-muted ">Ranking</p>
                             </div>
                         </div>
@@ -457,13 +457,13 @@
                                                                     <hr>
 
                                                                     <div v-if="dados.nome_anime.data_semana > dataAtual" class="progress progress-lg progress-animate">
-                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
                                                                     <div v-else-if="dados.nome_anime.data_semana == dataAtual" class="progress progress-lg progress-animate">
-                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
                                                                     <div v-else class="progress progress-lg progress-animate">
-                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at}</div>
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
 
                                                                     <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
@@ -761,6 +761,10 @@
                     olamundo(){
                         alert(this.teste2)
                     },
+                    formatarData(dataOriginal){
+                      let partesData = dataOriginal.split('-');
+                      return partesData[2] + '-' + partesData[1] + '-' + partesData[0];
+                    },
                     decreAnime(idAnime, idAssist){
                         
                         let item = this.episodios.find(item => item.id === idAssist);
@@ -839,10 +843,6 @@
                             });
                         }
                     },
-                    //decreAnime(idAnime, idAssist) {
-                        //console.log('ID do Anime:', idAnime);
-                        //console.log('ID do Assist:', idAssist);
-                    //},
                 },
                 mounted(){
                   //this.olamundo()  
