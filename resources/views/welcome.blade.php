@@ -789,7 +789,7 @@
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
                         .then(response => {
-                            console.log('decrement feito', response.data);
+                            console.log('aumento feito', response.data);
                             item.episodio = response.data.newEP;
                             this.plusExp(idUser);
                             this.plusDate(idAnime);
@@ -815,17 +815,20 @@
                     },
                     plusDate(idAnime){
                         
-                        let item = this.slc_animes.find(item => item.id === idAnime);
+                        let item = this.slc_animes.findIndex(item => item.id === idAnime);
                         
-                        let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
-                        axios.put(url.replace('123', idUser))
-                        
-                        .then(response => {
-                            console.log('Plus Date Assist');
-                        })
-                        .catch(error => {
-                            console.error('Error incrementing value:', error);
-                        });
+                        if (item !== -1) {
+                            let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
+                            axios.put(url.replace('123', idAnime))
+
+                            .then(response => {
+                                item.data_semana = response.data.newDate;
+                                console.log(response.data.newDate);
+                            })
+                            .catch(error => {
+                                console.error('Error incrementing value:', error);
+                            });
+                        }
                     },
                     stopAnime(idAssist){
                         

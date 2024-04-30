@@ -43,6 +43,8 @@ class PageController extends Controller
         //recupera todos os itens da coluna de uma tabela
         $slc_assistEpisodios = assistindo::orderBy('id', 'asc')->pluck('episodio');
         
+        $slc_animes = animes::all();
+        
         $slc_assistindoAll = assistindo::orderBy('id', 'desc')->get();
         
         $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
@@ -53,7 +55,7 @@ class PageController extends Controller
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
         
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "countParados", "slc_assistEpisodios", "slc_assistindoAll"]));
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "countParados", "slc_assistEpisodios", "slc_assistindoAll", "slc_animes"]));
     }
     
     public function formAnime(){
