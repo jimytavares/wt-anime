@@ -428,7 +428,7 @@
                                             <p>#{episodios}</p>
                                             
                                             <p>---------</p>
-                                            <p>#{slc_animes}</p>
+                                            
                                             
                                              <h1 class="page-title my-auto">#{teste2}</h1>
 
@@ -438,7 +438,6 @@
                                         
                                         <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
                                             <div class="row">
-                                                
                                                 
                                                 {{-- .VUE/JS --}}
                                                 <div v-for="dados in episodios" class="col-md-6 task-card">
@@ -466,7 +465,8 @@
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
 
-                                                                    <p class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
+                                                                    <p v-if="dados.data_semana" class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.data_semana.slice(0,10)}</span></p>
+                                                                    <p v-else class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
 
                                                                     <div class="d-flex align-items-center mt-3">
 
@@ -789,7 +789,7 @@
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
                         .then(response => {
-                            console.log('aumento feito', response.data);
+                            console.log('Aumento de EP', response.data);
                             item.episodio = response.data.newEP;
                             this.plusExp(idUser);
                             this.plusDate(idAnime);
@@ -800,14 +800,11 @@
                     },
                     plusExp(idUser){
                         
-                        let item = this.episodios.find(item => item.id_user === idUser);
-                        
                         let url = "{{ route('plusExp', ['idUser' => '123']) }}";
                         axios.put(url.replace('123', idUser))
                         
                         .then(response => {
                             console.log('Aumento de EXP');
-                            item.exp = response.data.newExp;
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);
@@ -815,20 +812,20 @@
                     },
                     plusDate(idAnime){
                         
-                        let item = this.slc_animes.findIndex(item => item.id === idAnime);
+                        let item = this.episodios.find(item => item.id_anime === idAnime);
+                        console.log(item);
                         
-                        if (item !== -1) {
-                            let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
-                            axios.put(url.replace('123', idAnime))
+                        let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
+                        axios.put(url.replace('123', idAnime))
 
-                            .then(response => {
-                                item.data_semana = response.data.newDate;
-                                console.log(response.data.newDate);
-                            })
-                            .catch(error => {
-                                console.error('Error incrementing value:', error);
-                            });
-                        }
+                        .then(response => {
+                            this.$set(item, 'data_semana', response.data.newDate);
+                            //item.data_semana = response.data.newDate;
+                            console.log('Aumento DATE', response.data.newDate);
+                        })
+                        .catch(error => {
+                            console.error('Error incrementing value:', error);
+                        });
                     },
                     stopAnime(idAssist){
                         
