@@ -80,7 +80,9 @@ class PageController extends Controller
         
         $getUserData = $this->getUserData();
         
-        return view('pages.list_anime', compact(["getUserData"]));
+        $animes = animes::orderBy('estreia', 'desc')->get();
+        
+        return view('pages.list_anime', compact(["getUserData", "animes"]));
     }
     
 }

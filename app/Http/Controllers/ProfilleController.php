@@ -59,6 +59,15 @@ class ProfilleController extends Controller
         return response()->json(['newExp' => $exp_user]);
     }
     
+    public function decreExp($idUser){
+        
+        user::findOrFail($idUser)->decrement('exp', 1);
+        $user = user::findOrFail($idUser);
+        $exp_user = $user->exp;
+        
+        return response()->json(['newExp' => $exp_user]);
+    }
+    
     public function plusDate($idAnime){
         
         /* Adicionando +7 dias na coluna data_semana */

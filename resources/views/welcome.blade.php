@@ -455,18 +455,18 @@
                                                                     <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">#{dados.nome_anime.nome}</a>
                                                                     <hr>
 
-                                                                    <div v-if="dados.nome_anime.data_semana > dataAtual" class="progress progress-lg progress-animate">
+                                                                    <div v-if="dados.nome_anime.data_semana > dataAtual || dados.data_semana > dataAtual" class="progress progress-lg progress-animate">
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
-                                                                    <div v-else-if="dados.nome_anime.data_semana == dataAtual" class="progress progress-lg progress-animate">
+                                                                    <div v-else-if="dados.nome_anime.data_semana == dataAtual || dados.data_semana == dataAtual" class="progress progress-lg progress-animate">
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
                                                                     <div v-else class="progress progress-lg progress-animate">
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
 
-                                                                    <p v-if="dados.data_semana" class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.data_semana.slice(0,10)}</span></p>
-                                                                    <p v-else class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio} - #{dados.nome_anime.data_semana}</span></p>
+                                                                    <p v-if="dados.data_semana" class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio + 1} - #{formatarData(dados.data_semana.slice(0,10))}</span></p>
+                                                                    <p v-else class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">Ep #{dados.episodio + 1} _ #{formatarData(dados.nome_anime.data_semana)}</span></p>
 
                                                                     <div class="d-flex align-items-center mt-3">
 
@@ -508,7 +508,7 @@
 
                                                                         <div class="" style="margin-left:10px;">
                                                                             <span class="me-2">
-                                                                                <a @click="decreAnime( dados.id_anime, dados.id )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
+                                                                                <a @click="decreAnime( dados.id_anime, dados.id, dados.id_user )" class="btn btn-sm btn-icon btn-wave btn-danger-light waves-effect waves-light"><i class="ri-subtract-line"></i></a>
                                                                             </span>
                                                                             <span class="me-2">
                                                                                 <a @click="plusAnime( dados.id_anime, dados.id, dados.id_user )" class="btn btn-sm btn-icon btn-wave btn-primary-light waves-effect waves-light"><i class="ri-add-line"></i></a>
@@ -757,15 +757,23 @@
                     slc_animes: {!! json_encode($slc_animes) !!},
                     items: ['item1', 'item2', 'item3'],
                 },
+                watch:{
+                    'episodios.episodio': {
+                        handler(){
+                            this.upEP();      
+                        },
+                        deep: true,
+                    },
+                },
                 methods: {
-                    olamundo(){
-                        alert(this.teste2)
+                    upEP(){
+                        alert(this.teste2);
                     },
                     formatarData(dataOriginal){
                       let partesData = dataOriginal.split('-');
                       return partesData[2] + '-' + partesData[1] + '-' + partesData[0];
                     },
-                    decreAnime(idAnime, idAssist){
+                    decreAnime(idAnime, idAssist, idUser){
                         
                         let item = this.episodios.find(item => item.id === idAssist);
                         
@@ -773,8 +781,9 @@
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
                         .then(response => {
-                            console.log('decrement feito');
+                            console.log('Voltando Episodio');
                             item.episodio = response.data.newEP;
+                            this.decreExp(idUser);
                         })
                         .catch(error => {
                             console.error('Error incrementing value:', error);
@@ -789,7 +798,7 @@
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
                         .then(response => {
-                            console.log('Aumento de EP', response.data);
+                            console.log('Aumento de Episodio', response.data);
                             item.episodio = response.data.newEP;
                             this.plusExp(idUser);
                             this.plusDate(idAnime);
@@ -810,6 +819,18 @@
                             console.error('Error incrementing value:', error);
                         });
                     },
+                    decreExp(idUser){
+                        
+                        let url = "{{ route('decreExp', ['idUser' => '123']) }}";
+                        axios.put(url.replace('123', idUser))
+                        
+                        .then(response => {
+                            console.log('Baixando EXP');
+                        })
+                        .catch(error => {
+                            console.error('Error decrement value:', error);
+                        });
+                    },
                     plusDate(idAnime){
                         
                         let item = this.episodios.find(item => item.id_anime === idAnime);
@@ -820,7 +841,6 @@
 
                         .then(response => {
                             this.$set(item, 'data_semana', response.data.newDate);
-                            //item.data_semana = response.data.newDate;
                             console.log('Aumento DATE', response.data.newDate);
                         })
                         .catch(error => {
