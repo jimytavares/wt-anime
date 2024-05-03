@@ -19,7 +19,7 @@
                 
                 <div class="card-body">
                     
-                    <form action="{{ route('formAnimePost') }}" method="post" enctype="multipart/form-data" style="font-family: 'Poppins', sans-serif;">
+                    <form action="{{ route('form_anime_post') }}" method="post" enctype="multipart/form-data" style="font-family: 'Poppins', sans-serif;">
                     @csrf
                         <div class="mb-4">
                             <label form="form-text" class="form-label">Nome Anime:</label>
@@ -122,6 +122,26 @@
                                 <div class="col-3 form-check form-check-inline">
                                   <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Luta">
                                   <label class="form-check-label" for="inlineCheckbox2">Luta</label>
+                                </div>
+                                <div class="col-3 form-check form-check-inline">
+                                  <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Magia/Mago">
+                                  <label class="form-check-label" for="inlineCheckbox2">Magia/Mago</label>
+                                </div>
+                                <div class="col-3 form-check form-check-inline">
+                                  <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Gundam">
+                                  <label class="form-check-label" for="inlineCheckbox2">Gundam</label>
+                                </div>
+                                <div class="col-3 form-check form-check-inline">
+                                  <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Harem">
+                                  <label class="form-check-label" for="inlineCheckbox2">Harem</label>
+                                </div>
+                                <div class="col-3 form-check form-check-inline">
+                                  <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Romance">
+                                  <label class="form-check-label" for="inlineCheckbox2">Romance</label>
+                                </div>
+                                <div class="col-3 form-check form-check-inline">
+                                  <input class="form-check-input form-checked-info" name="genero[]" type="checkbox" value="Paixao">
+                                  <label class="form-check-label" for="inlineCheckbox2">Paixao</label>
                                 </div>
                         </div>
 

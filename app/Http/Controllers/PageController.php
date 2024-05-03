@@ -85,4 +85,13 @@ class PageController extends Controller
         return view('pages.list_anime', compact(["getUserData", "animes"]));
     }
     
+    public function form_assistindo(){
+        
+        $getUserData = $this->getUserData();
+        
+        $animes = animes::all();
+        
+        return view('pages.form_assistindo', compact(["getUserData", "animes"]));
+    }
+    
 }

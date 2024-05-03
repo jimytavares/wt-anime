@@ -65,11 +65,18 @@
                         </li>
                     </ul>
                 </li>
+                
+                <li class="slide">
+                    <a href="{{route('form_assistindo')}}" class="side-menu__item">
+                        <i class="ri-macbook-line side-menu__icon"></i>
+                        <span class="side-menu__label">Cadastrar Assistindo</span>
+                    </a>
+                </li>
 
                 <li class="slide has-sub">
                     <a href="javascript:void(0);" class="side-menu__item">
                         <i class="ri-macbook-line side-menu__icon"></i>
-                        <span class="side-menu__label">Cadastrar Assistindo</span>
+                        <span class="side-menu__label">Menu</span>
                     </a>
                     <ul class="slide-menu child1 mega-menu">
                         <li class="slide side-menu__label1">

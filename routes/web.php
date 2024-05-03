@@ -16,8 +16,10 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::put('/api/plusDate/{idAnime}', [ProfilleController::class, 'plusDate'])->name('plusDate');
     Route::get('/api/create_parados/{id_assist}', [ProfilleController::class, 'createParados'])->name('createParados');
     
-    Route::get('/admin/formanime', [PageController::class, 'formAnime'])->name('formAnime');
-    Route::post('/admin/formanime', [ProfilleController::class, 'formAnimePost'])->name('formAnimePost');
-    Route::get('/admin/list_anime', [PageController::class, 'list_anime'])->name('list_anime');
+    Route::get('/habilidades/formanime', [PageController::class, 'formAnime'])->name('formAnime');
+    Route::post('/habilidades/formanime', [ProfilleController::class, 'form_anime_post'])->name('form_anime_post');
+    Route::get('/habilidades/assistir-anime', [PageController::class, 'form_assistindo'])->name('form_assistindo');
+    Route::post('/habilidades/assistir-anime', [ProfilleController::class, 'form_assistindo_post'])->name('form_assistindo_post');
+    Route::get('/habilidades/list_anime', [PageController::class, 'list_anime'])->name('list_anime');
     
 });

@@ -90,7 +90,7 @@ class ProfilleController extends Controller
         return response()->json(['newEP' => $assistindoEp]);
     }
     
-    public function formAnimePost(request $request){
+    public function form_anime_post(request $request){
         
         $tb_anime = new animes;
         
@@ -116,6 +116,29 @@ class ProfilleController extends Controller
         
         $tb_anime->save();
         return redirect()->route('formAnime');
+    }
+    
+    public function form_assistindo_post(request $request){
+        
+        /* Adicionando exp vinculado ao usuario apos add new anime */
+        $session_user = auth()->user();
+        $id_user = $session_user->id;
+        user::findOrFail($id_user)->increment('exp', 1);
+        
+        /* Cadastrando novo anime */
+        $animewatch = new assistindo;
+        
+        $animewatch->id_anime = $request->id_anime;
+        $animewatch->episodio = $request->episodio;
+        $animewatch->dia_semana = $request->dia_semana;
+        
+        $animewatch->nota = $request->nota;
+        $animewatch->descricao = $request->descricao;
+        $animewatch->id_usuario = $id_user;
+        $animewatch->link = $request->link;
+
+        $animewatch->save();
+        return redirect()->route('formAssistindo');
     }
     
     public function createParados($id_assist) {
