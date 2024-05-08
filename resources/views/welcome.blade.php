@@ -439,6 +439,8 @@
                                         <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
                                             <div class="row">
                                                 
+                                                <p>#{episodios}</p>
+                                                
                                                 {{-- .VUE/JS --}}
                                                 <div v-for="dados in episodios" class="col-md-6 task-card">
                                                     <div class="card custom-card task-pending-card">
