@@ -14,6 +14,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
     Route::put('/api/plusExp/{idUser}', [ProfilleController::class, 'plusExp'])->name('plusExp');
     Route::put('/api/decreExp/{idUser}', [ProfilleController::class, 'decreExp'])->name('decreExp');
     Route::put('/api/plusDate/{idAnime}', [ProfilleController::class, 'plusDate'])->name('plusDate');
+    Route::delete('/api/assistir-anime/delete/{idAnime}', [ProfilleController::class, 'assistindo_delete'])->name('assistindo_delete');
     Route::get('/api/create_parados/{id_assist}', [ProfilleController::class, 'createParados'])->name('createParados');
     
     Route::get('/habilidades/formanime', [PageController::class, 'formAnime'])->name('formAnime');
