@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="{{ asset('libs/gridjs/theme/mermaid.min.css') }}">
     
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
-
+    
 </head>
 <body>
 
@@ -1021,6 +1021,7 @@
     <script src="{{ asset('js/vue/axios.min.js') }}"></script>
     <script src="{{ asset('js/vue/axios-dev.js') }}"></script>
     
+    
     <!-- Popper JS -->
     <script src="{{ asset('libs/@popperjs/core/umd/popper.min.js') }}"></script>
 
@@ -1042,7 +1043,6 @@
 
     <!-- Color Picker JS -->
     <script src="{{ asset('libs/@simonwep/pickr/pickr.es5.min.js') }}"></script>
-
 
 
     <!-- JSVector Maps JS -->
@@ -1067,9 +1067,12 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/custom.js') }}"></script>
     
+    <!-- Jquery Cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    
     <!-- Select2 Cdn -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+
     <!-- Internal Select-2.js -->
     <script src="{{ asset('js/select2.js') }}"></script>
     

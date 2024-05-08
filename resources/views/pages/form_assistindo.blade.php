@@ -34,15 +34,18 @@
                             </select>
                         </div>
                         
-                        <div class="card-body" data-select2-id="select2-data-54-vq9z">
-                            <select class="select2-client-search form-control select2-hidden-accessible" data-select2-id="select2-data-17-38cw" tabindex="-1" aria-hidden="true">
-                                <option value="p-1" selected="" data-select2-id="select2-data-19-7o2f">Andrew</option>
-                                <option value="p-2" data-select2-id="select2-data-55-t2mc">Maya</option>
-                                <option value="p-3" data-select2-id="select2-data-56-zc6i">Brodus Axel</option>
-                                <option value="p-4" data-select2-id="select2-data-57-xmvb">Goldhens</option>
-                                <option value="p-5" data-select2-id="select2-data-58-nugd">Angelina</option>
-                            </select><span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="select2-data-18-httz" style="width: 458.328px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-w8dq-container" aria-controls="select2-w8dq-container"><span class="select2-selection__rendered" id="select2-w8dq-container" role="textbox" aria-readonly="true" title="Brodus Axel"><span><img src="../assets/images/faces/select2/p-3.jpg"> Brodus Axel</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                        </div>
+                        <div class="card-body" data-select2-id="select2-data-42-0kqg">
+                                <select class="select2-client-search form-control select2-hidden-accessible" data-select2-id="select2-data-17-kp1i" tabindex="-1" aria-hidden="true">
+                                    <option value="p-1" selected="selected" data-select2-id="select2-data-19-y7pa">
+                                        <img src="{{ URL::asset('storage/img/titulo.png') }}" alt="Andrew" style="width: 100%;">
+                                        Andrew
+                                    </option>
+                                    <option value="p-2" data-select2-id="select2-data-48-a6zi">Maya</option>
+                                    <option value="p-3" data-select2-id="select2-data-49-e9w7">Brodus Axel</option>
+                                    <option value="p-4" data-select2-id="select2-data-50-xpfd">Goldhens</option>
+                                    <option value="p-5" data-select2-id="select2-data-51-obo2">Angelina</option>
+                                </select>
+                            </div>
 
                         <div class="mb-4">
                             <label form="form-text" class="form-label">Episódio:</label>

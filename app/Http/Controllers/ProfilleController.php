@@ -141,6 +141,18 @@ class ProfilleController extends Controller
         return redirect()->route('formAssistindo');
     }
     
+    public function assistindo_delete($id){
+        
+        $item = assistindo::find($id);
+        if (!$item) {
+            return response()->json(['message' => 'Item não encontrado'], 404);
+        }
+        $item->delete();
+        return response()->json([
+            'message' => 'Item deletado com sucesso!'
+        ]);
+    }
+    
     public function createParados($id_assist) {
         
         if (!is_numeric($id_assist)) {

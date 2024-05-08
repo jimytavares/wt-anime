@@ -426,9 +426,8 @@
                                         
                                         <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
                                             <p>#{episodios}</p>
-                                            
                                             <p>---------</p>
-                                            
+                                            <p>#{teste3}</p>
                                             
                                              <h1 class="page-title my-auto">#{teste2}</h1>
 
@@ -450,6 +449,7 @@
                                                                 <div class="col-4">
                                                                     <img v-if="dados.nota == '10'" :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
                                                                     <img v-else :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
+                                                                    <a @click="deleteAnime(dados.id)"><span class="footer-badge badge bg-warning-transparent d-block" style="width:91%;">Deletar</span></a>
                                                                     
                                                                 </div>
                                                                 <div class="col">
@@ -757,6 +757,7 @@
                     //convertado objetos em uma string JSON
                     episodios: {!! json_encode($slc_assistindo) !!},
                     slc_animes: {!! json_encode($slc_animes) !!},
+                    teste3: {!! $assistindo !!},
                     items: ['item1', 'item2', 'item3'],
                 },
                 watch:{
@@ -862,6 +863,23 @@
                             })
                             .catch(error => {
                                 console.error('Error incrementing value:', error);
+                            });
+                        }
+                    },
+                    deleteAnime(idAnime){
+                        
+                        let item = this.episodios.findIndex(item => item.id === idAnime);
+                        
+                        if (item !== -1) {
+                            let url = "{{ route('assistindo_delete', ['idAnime' => '123']) }}";
+                            axios.delete(url.replace('123', idAnime))
+
+                            .then(response => {
+                                this.episodios.splice(item, 1);
+                                console.log(response.data.message);
+                            })
+                            .catch(error => {
+                              console.error(error);
                             });
                         }
                     },

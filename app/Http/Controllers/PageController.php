@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Resources\AssistindoCollection;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +49,10 @@ class PageController extends Controller
         
         $slc_assistindoAll = assistindo::orderBy('id', 'desc')->get();
         
+        $assistindo = assistindo::where('id_user', $id_user)->get();
+//        $assistindo = assistindo::with('nome_anime')->findOrFail($id_user);
+        $serialize_assistindo = new AssistindoCollection($assistindo);
+        
         $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
         $slc_assistindo = assistindo::where('id_user', $id_user)
             ->join('animes', 'animes.id', '=', 'assistindo.id_anime')
@@ -55,7 +61,7 @@ class PageController extends Controller
             ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
             ->get();
         
-        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "countParados", "slc_assistEpisodios", "slc_assistindoAll", "slc_animes"]));
+        return view('welcome', compact(["getUserData", "slc_assistindo", "dataAtual", "slc_assistindoStop", "countAssistindo", "countParados", "slc_assistEpisodios", "slc_assistindoAll", "slc_animes"]))->with('assistindo', $serialize_assistindo->toJson());
     }
     
     public function formAnime(){
