@@ -26,6 +26,9 @@ class AssistindoCollection extends ResourceCollection
                 'link' => $item->link,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
+                'nome' => $item->nome_anime->nome,
+                'data_semana' => $item->nome_anime->data_semana,
+                'image' => $item->nome_anime->image,
             ];
         })->toArray();
         

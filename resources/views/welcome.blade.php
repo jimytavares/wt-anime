@@ -65,13 +65,13 @@
                     <div class="card-body">
                         <ul class="list-group followers-list">
                             
-                            <li v-for="dados in episodios" class="list-group-item">
+                            <li v-for="dados in assistindo" class="list-group-item">
                                 <div v-if="dados.nota <= 7" class="d-sm-flex align-items-top">
                                     <span class="avatar avatar-sm">
-                                        <img :src="'storage/animes/' + dados.nome_anime.image" alt="img">
+                                        <img :src="'storage/animes/' + dados.image" alt="img">
                                     </span>
                                     <div class="ms-sm-2 ms-0 mt-sm-0 mt-1 fw-semibold flex-fill">
-                                        <p class="mb-0 lh-1">#{dados.nome_anime.nome}</p>
+                                        <p class="mb-0 lh-1">#{dados.nome}</p>
                                         <span class="fs-11 text-muted op-7">aliciasierra389@gmail.com</span>
                                     </div>
                                     <a @click="stopAnime(dados.id)" class="btn btn-light btn-wave btn-sm ms-auto">Parar</a>
@@ -425,9 +425,8 @@
                                         </div>
                                         
                                         <div class="tab-pane fade p-0 border-0" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
-                                            <p>#{episodios}</p>
+                                            <p>#{assistindo}</p>
                                             <p>---------</p>
-                                            <p>#{teste3}</p>
                                             
                                              <h1 class="page-title my-auto">#{teste2}</h1>
 
@@ -438,29 +437,29 @@
                                         <div class="tab-pane show active fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
                                             <div class="row">
                                                 
-                                                <p>#{episodios}</p>
+                                                <p>#{assistindo}</p>
                                                 
                                                 {{-- .VUE/JS --}}
-                                                <div v-for="dados in episodios" class="col-md-6 task-card">
+                                                <div v-for="dados in assistindo" class="col-md-6 task-card">
                                                     <div class="card custom-card task-pending-card">
                                                         <div class="card-body">
 
                                                             <div class="row">
                                                                 <div class="col-4">
-                                                                    <img v-if="dados.nota == '10'" :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
-                                                                    <img v-else :src="'storage/animes/' + dados.nome_anime.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
+                                                                    <img v-if="dados.nota == '10'" :src="'storage/animes/' + dados.image" style="width:90%; height:170px; border-radius:5px; border: 2px solid #00ff00; margin-top:10px;">
+                                                                    <img v-else :src="'storage/animes/' + dados.image" style="width:90%; height:170px; border-radius:5px; margin-top:10px;">
                                                                     <a @click="deleteAnime(dados.id)"><span class="footer-badge badge bg-warning-transparent d-block" style="width:91%;">Deletar</span></a>
                                                                     
                                                                 </div>
                                                                 <div class="col">
 
-                                                                    <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">#{dados.nome_anime.nome}</a>
+                                                                    <a href="javascript:void(0);" class="fs-16 fw-semibold mb-3 d-flex align-items-center">#{dados.nome}</a>
                                                                     <hr>
 
-                                                                    <div v-if="dados.nome_anime.data_semana > dataAtual || dados.data_semana > dataAtual" class="progress progress-lg progress-animate">
+                                                                    <div v-if="dados.data_semana > dataAtual || dados.data_semana > dataAtual" class="progress progress-lg progress-animate">
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
-                                                                    <div v-else-if="dados.nome_anime.data_semana == dataAtual || dados.data_semana == dataAtual" class="progress progress-lg progress-animate">
+                                                                    <div v-else-if="dados.data_semana == dataAtual || dados.data_semana == dataAtual" class="progress progress-lg progress-animate">
                                                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" :style="{ width: dados.episodio + '0%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Animated striped example">Ep #{dados.episodio} - #{dados.updated_at.slice(0, 10)}</div>
                                                                     </div>
                                                                     <div v-else class="progress progress-lg progress-animate">
@@ -468,7 +467,7 @@
                                                                     </div>
 
                                                                     <p v-if="dados.data_semana" class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">#{dados.episodio + 1} - #{formatarData(dados.data_semana.slice(0,10))}</span></p>
-                                                                    <p v-else class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">Ep #{dados.episodio + 1} _ #{formatarData(dados.nome_anime.data_semana)}</span></p>
+                                                                    <p v-else class="mb-3 mt-3">#{dados.dia_semana}: <span class="badge bg-info">Ep #{dados.episodio + 1} _ #{formatarData(dados.data_semana)}</span></p>
 
                                                                     <div class="d-flex align-items-center mt-3">
 
@@ -757,11 +756,11 @@
                     //convertado objetos em uma string JSON
                     episodios: {!! json_encode($slc_assistindo) !!},
                     slc_animes: {!! json_encode($slc_animes) !!},
-                    teste3: {!! $assistindo !!},
+                    assistindo: {!! $assistindo !!},
                     items: ['item1', 'item2', 'item3'],
                 },
                 watch:{
-                    'episodios.episodio': {
+                    'assistindo.episodio': {
                         handler(){
                             this.upEP();      
                         },
@@ -778,7 +777,7 @@
                     },
                     decreAnime(idAnime, idAssist, idUser){
                         
-                        let item = this.episodios.find(item => item.id === idAssist);
+                        let item = this.assistindo.find(item => item.id === idAssist);
                         
                         let url = "{{ route('decreAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
@@ -795,14 +794,14 @@
                     },
                     plusAnime(idAnime, idAssist, idUser){
                         
-                        let item = this.episodios.find(item => item.id === idAssist);
+                        let item = this.assistindo.find(item => item.id === idAssist);
                         
                         let url = "{{ route('plusAnime', [ 'id_anime' => '123', 'id_assist' => '1234' ] ) }}";
                         axios.put(url.replace('123', idAnime).replace('1234', idAssist))
                         
                         .then(response => {
-                            console.log('Aumento de Episodio', response.data);
                             item.episodio = response.data.newEP;
+                            console.log('Aumento de Episodio', response.data.newEP);
                             this.plusExp(idUser);
                             this.plusDate(idAnime);
                         })
@@ -836,14 +835,14 @@
                     },
                     plusDate(idAnime){
                         
-                        let item = this.episodios.find(item => item.id_anime === idAnime);
+                        let item = this.assistindo.find(item => item.id_anime === idAnime);
                         console.log(item);
                         
                         let url = "{{ route('plusDate', ['idAnime' => '123']) }}";
                         axios.put(url.replace('123', idAnime))
 
                         .then(response => {
-                            this.$set(item, 'data_semana', response.data.newDate);
+                            item.data_semana = response.data.newDate
                             console.log('Aumento DATE', response.data.newDate);
                         })
                         .catch(error => {
@@ -852,14 +851,14 @@
                     },
                     stopAnime(idAssist){
                         
-                        let item = this.episodios.findIndex(item => item.id === idAssist);
+                        let item = this.assistindo.findIndex(item => item.id === idAssist);
 
                         if (item !== -1) {
                             let url = "{{ route('createParados', ['id_assist' => '123']) }}";
                             axios.get(url.replace('123', idAssist))
 
                             .then(response => {
-                                this.episodios.splice(item, 1);
+                                this.assistindo.splice(item, 1);
                             })
                             .catch(error => {
                                 console.error('Error incrementing value:', error);
@@ -868,14 +867,14 @@
                     },
                     deleteAnime(idAnime){
                         
-                        let item = this.episodios.findIndex(item => item.id === idAnime);
+                        let item = this.assistindo.findIndex(item => item.id === idAnime);
                         
                         if (item !== -1) {
                             let url = "{{ route('assistindo_delete', ['idAnime' => '123']) }}";
                             axios.delete(url.replace('123', idAnime))
 
                             .then(response => {
-                                this.episodios.splice(item, 1);
+                                this.assistindo.splice(item, 1);
                                 console.log(response.data.message);
                             })
                             .catch(error => {

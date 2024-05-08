@@ -49,8 +49,13 @@ class PageController extends Controller
         
         $slc_assistindoAll = assistindo::orderBy('id', 'desc')->get();
         
-        $assistindo = assistindo::where('id_user', $id_user)->get();
-//        $assistindo = assistindo::with('nome_anime')->findOrFail($id_user);
+        //$assistindo = assistindo::with('nome_anime')->findOrFail($id_user);
+        $assistindo = assistindo::where('id_user', $id_user)
+                    ->join('animes', 'animes.id', '=', 'assistindo.id_anime')
+                    ->orderBy('animes.data_semana')
+                    ->select('assistindo.*')
+                    ->with(['nome_anime' => function ($query) {$query->orderBy('data_semana');}])
+                    ->get();
         $serialize_assistindo = new AssistindoCollection($assistindo);
         
         $slc_assistindoStop = assistindo::orderBy('updated_at', 'desc')->take(5)->get();
